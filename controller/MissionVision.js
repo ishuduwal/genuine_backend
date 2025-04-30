@@ -3,7 +3,7 @@ import MissionVision from '../model/MissionVision.js';
 // Create MissionVision (only one document should exist)
 export const createMissionVision = async (req, res) => {
     try {
-        const { overview, whoWeAre, mission, vision } = req.body;
+        const { overview, whoWeAre, mission, vision, overviewTitle, whoWeAreTitle, missionvisionTitle } = req.body;
         
         // Check if document already exists
         const existing = await MissionVision.findOne();
@@ -18,7 +18,10 @@ export const createMissionVision = async (req, res) => {
             overview,
             whoWeAre,
             mission,
-            vision
+            vision,
+            overviewTitle, 
+            whoWeAreTitle, 
+            missionvisionTitle
         });
 
         await missionVision.save();
@@ -53,7 +56,7 @@ export const getMissionVision = async (req, res) => {
 // Update MissionVision
 export const updateMissionVision = async (req, res) => {
     try {
-        const { overview, whoWeAre, mission, vision } = req.body;
+        const { overview, whoWeAre, mission, vision, overviewTitle, whoWeAreTitle, missionvisionTitle } = req.body;
         const missionVision = await MissionVision.findById(req.params.id);
 
         if (!missionVision) {
@@ -67,6 +70,9 @@ export const updateMissionVision = async (req, res) => {
         missionVision.whoWeAre = whoWeAre || missionVision.whoWeAre;
         missionVision.mission = mission || missionVision.mission;
         missionVision.vision = vision || missionVision.vision;
+        missionVision.overviewTitle = overviewTitle || missionVision.overviewTitle;
+        missionVision.whoWeAreTitle = whoWeAreTitle || missionVision.whoWeAreTitle;
+        missionVision.missionvisionTitle = missionvisionTitle || missionVision.missionvisionTitle;
 
         await missionVision.save();
 

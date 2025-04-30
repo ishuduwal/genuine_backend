@@ -5,9 +5,17 @@ const missionVisionSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    overviewTitle:{
+        type:String,
+        required:true
+    },
     whoWeAre: {
         type: String,
         required: true
+    },
+    whoWeAreTitle:{
+        type:String,
+        required:true
     },
     mission: {
         type: String,
@@ -16,6 +24,10 @@ const missionVisionSchema = new mongoose.Schema({
     vision: {
         type: String,
         required: true
+    },
+    missionvisionTitle:{
+        type:String, 
+        required:true
     },
     createdAt: {
         type: Date,
