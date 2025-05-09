@@ -16,6 +16,7 @@ import facilityRouter from "./router/Facility.js";
 import teacherRouter from "./router/Teacher.js";
 import departmentRouter from "./router/Department.js";
 import statsRouter from "./router/Stats.js";
+import videoRouter from "./router/Video.js";
 
 // Initialize Express app
 const app = express();
@@ -72,6 +73,7 @@ app.use('/api/facilities', facilityRouter);
 app.use('/api/teachers', teacherRouter);
 app.use('/api/departments', departmentRouter);
 app.use('/api/stats', statsRouter);
+app.use('/api/video', videoRouter)
 
 // Health Check Endpoint
 app.get('/api/health', (req, res) => {

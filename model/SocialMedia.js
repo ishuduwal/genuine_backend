@@ -21,7 +21,12 @@ const socialMediaSchema = new mongoose.Schema({
     trim: true,
     validate: {
       validator: function (v) {
-        return /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/.test(v);
+        try {
+          new URL(v);
+          return true;
+        } catch (error) {
+          return false;
+        }
       },
       message: props => `${props.value} is not a valid URL!`,
     },
